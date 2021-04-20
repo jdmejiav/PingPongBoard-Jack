@@ -1,0 +1,89 @@
+function Barra.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push pointer 0
+return
+function Barra.getPosy 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Barra.setPosy 0
+push argument 0
+pop pointer 0
+push this 1
+pop this 1
+push constant 0
+return
+function Barra.moveUp 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 10
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+call Barra.drawBarra 1
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 1
+push constant 5
+sub
+pop this 1
+label IF_FALSE0
+push constant 0
+return
+function Barra.moveDown 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 186
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+call Barra.drawBarra 1
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 1
+push constant 5
+add
+pop this 1
+label IF_FALSE0
+push constant 0
+return
+function Barra.drawBarra 0
+push argument 0
+pop pointer 0
+push this 0
+push this 1
+push this 0
+push constant 10
+add
+push this 1
+push constant 60
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return

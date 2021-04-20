@@ -1,0 +1,119 @@
+class Tablero {
+    // attributes and methods
+    field Barra barra1;
+    field Barra barra2;
+    field Bola bola;
+
+    constructor Tablero new(){
+        let barra1 = Barra.new(10,100);
+        let barra2 = Barra.new(492,100);
+        let bola = Bola.new();
+        return this;
+    }
+
+    method Barra getBarra1(){
+        return barra1;
+    }
+
+    method Barra getBarra2(){
+        return barra2;
+    }
+
+    method Bola getBola(){
+        return bola;
+    }
+
+    method void setBola(Bola bolaa){
+        let bola = bolaa;
+        return;
+    }
+    method void drawTablero(){
+        do barra1.drawBarra();                              //barra1
+        do barra2.drawBarra();                              //barra2 
+        do bola.drawBola();                                 //División
+        do Screen.drawRectangle(254,0,256,255);             //Bola
+        return;
+    }
+
+    method void moveBola(){
+        var Bola tempBola;
+        var Barra tempBarra1;
+        var Barra tempBarra2;
+
+        do bola.clearBola();
+
+        if (bola.getPosy()<10){
+            if (bola.getDireccion() = 0){         //derecha Subiendo
+                do bola.setDireccion(1);        //derecha Bajando
+            }
+            if (bola.getDireccion() = 2){         //izquierda Dubiendo
+                do bola.setDireccion(3);        //izquierda bajando
+            }
+        }
+
+        if (bola.getPosy()>245){
+            if (bola.getDireccion() = 1){         //derecha bajando
+                do bola.setDireccion(0);      //derecha subiendo
+            }
+            if(bola.getDireccion() = 3){          //izquierda bajando
+                do bola.setDireccion(2);        //izquierda subiendo
+            }
+
+        }
+
+
+        if (bola.getPosx() < 20){
+            if (barra1.getPosy() < bola.getPosy()){
+                if (barra1.getPosy()+60 > bola.getPosy()){
+                    if (bola.getDireccion() = 2){
+                        do bola.setDireccion(0);
+                    }
+                    if (bola.getDireccion() = 3){
+                        do bola.setDireccion(1);
+                    }
+                }
+            }
+
+        }
+
+        if (bola.getPosx() > 492){
+            
+            if (barra2.getPosy() < bola.getPosy()){
+                
+                if (barra2.getPosy()+60 > bola.getPosy()){
+
+                    if (bola.getDireccion() = 0){
+                        do bola.setDireccion(2);
+                    }
+                    if (bola.getDireccion() = 1){
+                        do bola.setDireccion(3);
+                    }
+                }
+            }
+
+        }
+
+        if (bola.getDireccion()=0){ //derecha subiendo
+            do bola.setPosx(bola.getPosx()+5);
+            do bola.setPosy(bola.getPosy()-5);
+        }
+        if (bola.getDireccion()=1){ //derecha bajando
+            do bola.setPosx(bola.getPosx()+5);
+            do bola.setPosy(bola.getPosy()+5);
+        }
+        if (bola.getDireccion() = 2){ //izquierda subiendo
+            do bola.setPosx(bola.getPosx()-5);
+            do bola.setPosy(bola.getPosy()-5);
+        }
+        if (bola.getDireccion()=3){ //izquierda bajando
+            do bola.setPosx(bola.getPosx()-5);
+            do bola.setPosy(bola.getPosy()+5);
+
+        }
+
+        do bola.drawBola();
+        return;
+
+
+    }    
+}
