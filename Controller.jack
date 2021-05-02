@@ -1,6 +1,6 @@
 class Controller {
+    
     field Tablero tablero;
-
 
 
     constructor Controller new (){
@@ -12,6 +12,7 @@ class Controller {
         var Barra temp;
         var char entrada;
         var Bola tempBola;
+        var Player tempJugador;
         let tablero= Tablero.new();
 
         do tablero.drawTablero();
@@ -40,7 +41,7 @@ class Controller {
             }
 
             if (entrada = 87){ // 'W'
-                let temp = tablero.getBarra2();
+                let temp = tablero.getBarra2();         
                 do temp.moveUp();
 
             }
@@ -51,9 +52,21 @@ class Controller {
 
             }
             let tempBola= tablero.getBola();
-            do tablero.moveBola();
+            do tablero.moveBola(); 
             do tablero.drawTablero();
             do tablero.setBola(tempBola);
+
+            let tempJugador = tablero.getJugador1();
+            if (tempJugador.getMarcador()=10){
+                do tablero.dispose();
+                return;
+            }
+            let tempJugador = tablero.getJugador2();
+            if (tempJugador.getMarcador()=10){
+                do tablero.dispose();
+                return;
+            }
+
 
             let entrada=0;
             do Sys.wait(20);

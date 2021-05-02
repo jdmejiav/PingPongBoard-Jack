@@ -48,13 +48,34 @@ class Bola {
 
     }
 
+    method void duplicarRadio(){
+        let r = r +r;
+        return;
+    }
+    
+
+    method int getRadio(){
+        return r;
+    }
+
+    method void setRadio(int radio){
+        let r = radio;
+        return;
+    }
+
+
+
     method void clearBola(){
         do Screen.setColor(false);
         do Screen.drawCircle(posx,posy,r);
         do Screen.setColor(true);
         return;
     }
-
+    
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
 
 
 }

@@ -58,6 +58,27 @@ call Screen.drawCircle 3
 pop temp 0
 push constant 0
 return
+function Bola.duplicarRadio 0
+push argument 0
+pop pointer 0
+push this 2
+push this 2
+add
+pop this 2
+push constant 0
+return
+function Bola.getRadio 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Bola.setRadio 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 2
+push constant 0
+return
 function Bola.clearBola 0
 push argument 0
 pop pointer 0
@@ -72,6 +93,14 @@ pop temp 0
 push constant 0
 not
 call Screen.setColor 1
+pop temp 0
+push constant 0
+return
+function Bola.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
 pop temp 0
 push constant 0
 return
